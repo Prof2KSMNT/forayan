@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery</title>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <style>
+      @font-face {
+        font-family: Custom;
+        src: url(Lovelace-Script-Extrabold-trial.ttf);
+      }
+      * {
+        font-family: Custom;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <section id="gallery">
+      <h1>GALLERY</h1>
+      <div class="meme-carousel">
+        <div class="slider-wrapper">
+          <button id="prev-slide" class="slide-button material-symbols-rounded">
+            <ion-icon name="caret-back-outline"></ion-icon>
+          </button>
+          <ul class="image-list">
+            <img class="image-item" src="p1.png" alt="img-1" />
+            <img class="image-item" src="p2.png" alt="img-2" />
+            <img class="image-item" src="p3.png" alt="img-3" />
+            <img class="image-item" src="p4.png" alt="img-4" />
+            <img class="image-item" src="p5.PNG" alt="img-5" />
+            <img class="image-item" src="p6.PNG" alt="img-6" />
+            <img class="image-item" src="p7.PNG" alt="img-7" />
+          </ul>
+          <button id="next-slide" class="slide-button material-symbols-rounded">
+            <ion-icon name="caret-forward-outline"></ion-icon>
+          </button>
+        </div>
+        <div class="slider-scrollbar">
+          <div class="scrollbar-track">
+            <div class="scrollbar-thumb"></div>
+          </div>
+        </div>
+      </div>
+      <p>It was an awesome feeling making all this work for you!</p>
+      <style>
+        #gallery {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          gap: 40px;
+          background-color: #dbbec0;
+          h1 {
+            color: #fff;
+            font-size: 60px;
+          }
+          p {
+            color: #fff;
+            font-size: 40px;
+          }
+        }
+        .meme {
+          width: 100%;
+          height: 600px;
+
+          display: flex;
+          align-items: center;
+          justify-content: baseline;
+          flex-direction: column;
+          padding: 20px;
+
+          background-image: url(assets/img/2.jpg);
+        }
+        .meme h1 {
+          font-size: 5em;
+          color: rgb(25, 110, 25);
+        }
+
+        @media (max-width: 700px) {
+          .meme h1 {
+            font-size: 3em;
+          }
+        }
+
+        .meme-carousel {
+          max-width: 1200px;
+          width: 95%;
+        }
+
+        .slider-wrapper {
+          position: relative;
+        }
+
+        .slider-wrapper .slide-button {
+          position: absolute;
+          top: 50%;
+          outline: none;
+          border: none;
+          height: 50px;
+          width: 50px;
+          z-index: 5;
+          color: #fff;
+          display: flex;
+          cursor: pointer;
+          font-size: 2.2rem;
+          background: #000;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          transform: translateY(-50%);
+        }
+
+        .slider-wrapper .slide-button:hover {
+          background: #404040;
+        }
+
+        .slider-wrapper .slide-button#prev-slide {
+          left: -25px;
+          display: none;
+        }
+
+        .slider-wrapper .slide-button#next-slide {
+          right: -25px;
+        }
+
+        .slider-wrapper .image-list {
+          display: grid;
+          grid-template-columns: repeat(10, 1fr);
+          gap: 18px;
+          font-size: 0;
+          list-style: none;
+          margin-bottom: 30px;
+          overflow-x: auto;
+          scrollbar-width: none;
+        }
+
+        .slider-wrapper .image-list::-webkit-scrollbar {
+          display: none;
+        }
+
+        .slider-wrapper .image-list .image-item {
+          width: 325px;
+          height: 400px;
+          object-fit: cover;
+        }
+
+        .meme-carousel .slider-scrollbar {
+          height: 24px;
+          width: 100%;
+          display: flex;
+          align-items: center;
+        }
+
+        .slider-scrollbar .scrollbar-track {
+          background: #ccc;
+          width: 100%;
+          height: 2px;
+          display: flex;
+          align-items: center;
+          border-radius: 4px;
+          position: relative;
+        }
+
+        .slider-scrollbar:hover .scrollbar-track {
+          height: 4px;
+        }
+
+        .slider-scrollbar .scrollbar-thumb {
+          position: absolute;
+          background: #000;
+          top: 0;
+          bottom: 0;
+          width: 50%;
+          height: 100%;
+          cursor: grab;
+          border-radius: inherit;
+        }
+
+        .slider-scrollbar .scrollbar-thumb:active {
+          cursor: grabbing;
+          height: 8px;
+          top: -2px;
+        }
+
+        .slider-scrollbar .scrollbar-thumb::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: -10px;
+          bottom: -10px;
+        }
+
+        /* Styles for mobile and tablets */
+        @media only screen and (max-width: 1023px) {
+          .slider-wrapper .slide-button {
+            display: none !important;
+          }
+
+          .slider-wrapper .image-list {
+            gap: 10px;
+            margin-bottom: 15px;
+            scroll-snap-type: x mandatory;
+          }
+
+          .slider-wrapper .image-list .image-item {
+            width: 425px;
+            height: 380px;
+          }
+
+          .slider-scrollbar .scrollbar-thumb {
+            width: 20%;
+          }
+        }
+      </style>
+      <!-- Image Carousel -->
+      <script>
+        const initSlider = () => {
+          const imageList = document.querySelector(
+            ".slider-wrapper .image-list"
+          );
+          const slideButtons = document.querySelectorAll(
+            ".slider-wrapper .slide-button"
+          );
+          const sliderScrollbar = document.querySelector(
+            ".meme-carousel .slider-scrollbar"
+          );
+          const scrollbarThumb =
+            sliderScrollbar.querySelector(".scrollbar-thumb");
+          const maxScrollLeft = imageList.scrollWidth - imageList.clientWidth;
+
+          // Handle scrollbar thumb drag
+          scrollbarThumb.addEventListener("mousedown", (e) => {
+            const startX = e.clientX;
+            const thumbPosition = scrollbarThumb.offsetLeft;
+            const maxThumbPosition =
+              sliderScrollbar.getBoundingClientRect().width -
+              scrollbarThumb.offsetWidth;
+
+            // Update thumb position on mouse move
+            const handleMouseMove = (e) => {
+              const deltaX = e.clientX - startX;
+              const newThumbPosition = thumbPosition + deltaX;
+
+              // Ensure the scrollbar thumb stays within bounds
+              const boundedPosition = Math.max(
+                0,
+                Math.min(maxThumbPosition, newThumbPosition)
+              );
+              const scrollPosition =
+                (boundedPosition / maxThumbPosition) * maxScrollLeft;
+
+              scrollbarThumb.style.left = `${boundedPosition}px`;
+              imageList.scrollLeft = scrollPosition;
+            };
+
+            // Remove event listeners on mouse up
+            const handleMouseUp = () => {
+              document.removeEventListener("mousemove", handleMouseMove);
+              document.removeEventListener("mouseup", handleMouseUp);
+            };
+
+            // Add event listeners for drag interaction
+            document.addEventListener("mousemove", handleMouseMove);
+            document.addEventListener("mouseup", handleMouseUp);
+          });
+
+          // Slide images according to the slide button clicks
+          slideButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+              const direction = button.id === "prev-slide" ? -1 : 1;
+              const scrollAmount = imageList.clientWidth * direction;
+              imageList.scrollBy({ left: scrollAmount, behavior: "smooth" });
+            });
+          });
+
+          // Show or hide slide buttons based on scroll position
+          const handleSlideButtons = () => {
+            slideButtons[0].style.display =
+              imageList.scrollLeft <= 0 ? "none" : "flex";
+            slideButtons[1].style.display =
+              imageList.scrollLeft >= maxScrollLeft ? "none" : "flex";
+          };
+
+          // Update scrollbar thumb position based on image scroll
+          const updateScrollThumbPosition = () => {
+            const scrollPosition = imageList.scrollLeft;
+            const thumbPosition =
+              (scrollPosition / maxScrollLeft) *
+              (sliderScrollbar.clientWidth - scrollbarThumb.offsetWidth);
+            scrollbarThumb.style.left = `${thumbPosition}px`;
+          };
+
+          // Call these two functions when image list scrolls
+          imageList.addEventListener("scroll", () => {
+            updateScrollThumbPosition();
+            handleSlideButtons();
+          });
+        };
+
+        window.addEventListener("resize", initSlider);
+        window.addEventListener("load", initSlider);
+      </script>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BONKBONK</title>
+  </head>
+  <body>
+    <div class="game-container">
+      <div class="game" id="game">
+        <h1 class="score">
+          SCORE:
+          <span style="font-family: Arial, Helvetica, sans-serif">00</span>
+        </h1>
+        <div class="board">
+          <div class="hole"></div>
+          <div class="hole"></div>
+          <div class="hole"></div>
+          <div class="hole"></div>
+          <div class="hole"></div>
+          <div class="hole"></div>
+          <div class="hole"></div>
+          <div class="hole"></div>
+          <div class="hole"></div>
+        </div>
+        <div class="cursor"></div>
+        <style>
+          @font-face {
+            font-family: Custom;
+            src: url(Lovelace-Script-Extrabold-trial.ttf);
+          }
+          * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: Custom;
+          }
+          .game-container {
+            height: 840px;
+            background-color: #dbbec0;
+            width: 100%;
+            overflow: hidden;
+            cursor: none;
+          }
+          /* Bonk the horny Dawg */
+          .game {
+            margin: 1rem 0 0 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+          }
+          .board {
+            height: 500px;
+            width: 600px;
+            border-radius: 15px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 80px;
+            background-color: #ffa2b6;
+            padding: 20px;
+          }
+          .score,
+          .game h1 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+            color: white;
+          }
+          .hole {
+            background-color: rgb(0, 0, 0);
+            box-shadow: inset 0 10px 0 7px rgb(53, 21, 6),
+              inset 0 20px 20px 15px rgba(0, 0, 0, 0.3),
+              0 0 5px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            border-radius: 50%;
+          }
+          .hole .mole {
+            height: 120px;
+            width: 80%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+            animation: rise 0.3s ease-out;
+          }
+          @keyframes rise {
+            0% {
+              transform: translateX(-50%) translateY(100%);
+            }
+            100% {
+              transform: translateX(-50%) translateY(0);
+            }
+          }
+          .cursor {
+            height: 160px;
+            width: 110px;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            /* Bonker Img */
+            background-image: url(cursor.jpg);
+            background-size: 100% 100%;
+            transform: translate(-20%, -20%);
+            transition: transform 0.1s;
+            pointer-events: none;
+            z-index: 100;
+          }
+          .cursor.active {
+            transform: translate(-20%, -20%) rotate(-45deg);
+          }
+          /* Game Reponsiveness */
+          @media (max-width: 700px) {
+            .score {
+              font-size: 2rem;
+            }
+            .board {
+              grid-template-columns: repeat(3, 1fr);
+              grid-template-rows: repeat(6, 1fr);
+              gap: 40px;
+              width: 90%; /* Adjust to your preference */
+              height: 450px;
+            }
+            .hole {
+              height: 100px;
+              width: 100px;
+            }
+            .cursor {
+              height: 60px;
+              width: 50px;
+              background-size: 100% 100%;
+            }
+          }
+        </style>
+        <script>
+          <!-- Bonking The Horny Dawg Game -->
+
+          const cursor = document.querySelector(".cursor");
+
+          const holes = [...document.querySelectorAll(".hole")];
+
+          const scoreEl = document.querySelector(".score span");
+          let score = 0;
+
+          const sound = new Audio("");
+
+          // Function to run game
+          function run() {
+            const i = Math.floor(Math.random() * holes.length);
+            const hole = holes[i];
+            let timer = null;
+
+            const img = document.createElement("img");
+            img.classList.add("mole");
+
+            img.src = "bonk.PNG";
+
+            img.addEventListener("click", () => {
+              score += 10;
+              sound.play();
+
+              scoreEl.textContent = score;
+
+              img.src = "bonk.PNG";
+              clearTimeout(timer);
+              setTimeout(() => {
+                hole.removeChild(img);
+                run();
+              }, 500);
+            });
+
+            hole.appendChild(img);
+
+            timer = setTimeout(() => {
+              hole.removeChild(img);
+              run();
+            }, 2000);
+          }
+          run();
+
+          window.addEventListener("mousemove", (e) => {
+            cursor.style.top = e.pageY + "px";
+            cursor.style.left = e.pageX + "px";
+          });
+
+          window.addEventListener("mousedown", () => {
+            cursor.classList.add("active");
+          });
+
+          window.addEventListener("mouseup", () => {
+            cursor.classList.remove("active");
+          });
+        </script>
+      </div>
+    </div>
+  </body>
+</html>

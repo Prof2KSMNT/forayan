@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Joke Genny</title>
+    <style>
+      @font-face {
+        font-family: Custom;
+        src: url(Lovelace-Script-Extrabold-trial.ttf);
+      }
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+
+        background-color: #ffa2b6;
+        font-family: Custom, Arial, sans-serif;
+        color: #fff;
+      }
+      .container {
+        text-align: center;
+      }
+      #joke-container {
+        margin-bottom: 20px;
+        -webkit-text-stroke: 1px black;
+        h2 {
+          font-size: 50px;
+        }
+        p {
+          font-size: 30px;
+          font-family: "Times New Roman", Times, serif;
+        }
+      }
+      #generate-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #ff69b4; /* Pink color for a sweet touch */
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="joke-container">
+        <h2 class="mb-4">Funny Joke to hopefully enlighten your day</h2>
+        <p id="generated-joke" class="h3"></p>
+      </div>
+      <button id="generate-btn">Generate Joke</button>
+    </div>
+
+    <script>
+      const funnyJokesForCrush = [
+        "Why don't scientists trust atoms? Because they make up everything, just like my friend's excuses.",
+        "I told my computer I needed a break, and now it won't stop sending me vacation ads. Even technology knows you deserve a break!",
+        "Why don't skeletons fight each other? They don't have the guts, unlike you!",
+        "I used to play piano by ear, but now I use my hands and fingers – way more convenient.",
+        "I only know 25 letters of the alphabet. I don't know y, but I do know you're A+!",
+        "What do you call fake spaghetti? An impasta. This joke is as fake as my cooking skills.",
+        "Why did the scarecrow win an award? Because he was outstanding in his field, just like you in everything you do!",
+        "What do you call a fish wearing a crown? A kingfish. Your majesty!",
+        "I told my wife she should embrace her mistakes. She gave me a hug.",
+        "Why did the coffee file a police report? It got mugged. Coffee needs protection, and so does your sense of humor!",
+      ];
+
+      document
+        .getElementById("generate-btn")
+        .addEventListener("click", generateJoke);
+
+      function generateJoke() {
+        const randomIndex = Math.floor(
+          Math.random() * funnyJokesForCrush.length
+        );
+        const generatedJoke = funnyJokesForCrush[randomIndex];
+        document.getElementById("generated-joke").textContent = generatedJoke;
+      }
+    </script>
+  </body>
+</html>

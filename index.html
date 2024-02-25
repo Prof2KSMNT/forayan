@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <title>Hi Aya...</title>
+    <style>
+      @font-face {
+        font-family: Custom;
+        src: url(Lovelace-Script-Extrabold-trial.ttf);
+      }
+      :root {
+        --main: #dbbec0;
+        --sec: #ffa2b6;
+
+        --primary: #fff;
+        --bg-color: rgb(5, 53, 61);
+        --bg-envelope-color: #f5edd1;
+        --envelope-tab: #ecdeb8;
+        --envelope-cover: #e6cfa7;
+        --shadow-color: rgba(0, 0, 0, 0.2);
+        --txt-color: #444;
+        --heart-color: rgb(252, 8, 231);
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: Custom;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+      section {
+        height: 700px;
+        nav {
+          display: flex;
+          padding: 20px;
+          width: 100%;
+          font-size: 20px;
+          top: 0;
+          z-index: 100;
+        }
+        nav a {
+          text-decoration: none;
+          -webkit-text-stroke-width: 1.5px;
+          -webkit-text-stroke-color: black;
+          transition: 0.3s ease-in-out;
+          padding: 10px;
+          text-align: center;
+        }
+      }
+      @media (max-width: 700px) {
+        section {
+          height: max-content;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section id="top">
+      <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#top">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="gallery.html" target="_blank"
+                >Gallery</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="bonk.html" target="_blank">Bonk</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="jokegen.html" target="_blank">Jokes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="doodle.html" target="_blank">Canvas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#forms">Form</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <main>
+        <div class="left"><img src="main.png" alt="img" /></div>
+        <div class="right">
+          <h1>Hi, Ayan</h1>
+          <div class="link">
+            <a href="read.html" target="_blank">READ</a
+            ><a href="Suprise.html" target="_blank">SUPRISE</a>
+          </div>
+        </div>
+        <div class="music-player">
+          <audio
+            id="audio"
+            src="Bruno Major - The Most Beautiful Thing lyrics.mp3"
+          ></audio>
+          <button id="playPauseBtn" onclick="togglePlayPause()">Play</button>
+        </div>
+        <script>
+          const audio = document.getElementById("audio");
+          const playPauseBtn = document.getElementById("playPauseBtn");
+
+          function togglePlayPause() {
+            if (audio.paused) {
+              audio.play();
+              playPauseBtn.textContent = "Pause";
+            } else {
+              audio.pause();
+              playPauseBtn.textContent = "Play";
+            }
+          }
+        </script>
+      </main>
+      <style>
+        #top {
+          background-color: var(--main);
+          display: flex;
+          flex-direction: column;
+
+          main {
+            display: flex;
+            flex-wrap: wrap;
+            height: inherit;
+            .left {
+              flex: 1 0 45%;
+              display: grid;
+              place-items: center;
+              position: relative;
+              img {
+                background-color: gray;
+                width: 350px;
+                height: 500px;
+                transform: rotate(-7deg);
+                position: absolute;
+                right: 0;
+              }
+            }
+
+            .right {
+              flex: 1 0 55%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-direction: column;
+              gap: 40px;
+              h1 {
+                font-size: 130px;
+                width: 400px;
+                text-align: center;
+              }
+              .link {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                width: 390px;
+                gap: 10px;
+
+                a {
+                  background-color: #fff;
+                  padding: 12px;
+                  text-decoration: none;
+                  width: 150px;
+                  text-align: center;
+                  color: #000;
+                  border-radius: 15px;
+                  box-shadow: 0px 5px 10px black;
+                }
+              }
+            }
+            .music-player {
+              text-align: center;
+              width: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              button {
+                border-radius: 15px;
+                border: none;
+                box-shadow: 0px 5px 10px black;
+              }
+            }
+
+            button {
+              padding: 10px 20px;
+              font-size: 16px;
+              cursor: pointer;
+            }
+            @media (max-width: 700px) {
+              .left {
+                height: 300px;
+                img {
+                  height: 250px;
+                  width: 200px;
+                  right: 50%;
+                  transform: translate(50%);
+                }
+              }
+              .right {
+                height: 300px;
+                width: 200px;
+                h1 {
+                  font-size: 40px;
+
+                  width: 300px;
+                }
+                .link {
+                  width: 230px;
+                  a {
+                    font-size: 10px;
+                    width: 100px;
+                  }
+                }
+              }
+            }
+            .music-player {
+              margin-bottom: 20px;
+              button {
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      </style>
+    </section>
+
+    <section id="forms">
+      <h1>After you're done answer the form please</h1>
+      <img src="formpic.png" alt="" />
+      <a
+        href="https://docs.google.com/forms/d/e/1FAIpQLScs1Q9S1E-qL7TXtN_MCvH5cbpFWxWg-VlddIP4gIz6OLsJUw/viewform
+      "
+        target="_blank"
+        >FORM</a
+      >
+      <style>
+        #forms {
+          background-color: var(--sec);
+          display: flex;
+          align-items: center;
+          padding: 50px;
+          height: fit-content;
+          flex-direction: column;
+          gap: 30px;
+          img {
+            height: 500px;
+          }
+          h1 {
+            color: #fff;
+            font-size: 30px;
+          }
+          a {
+            text-decoration: none;
+            color: black;
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 15px;
+            width: 320px;
+            text-align: center;
+            font-size: 40px;
+          }
+        }
+        @media (max-width: 700px) {
+          #forms {
+            img {
+              height: 200px;
+            }
+            a {
+              font-size: 20px;
+              width: 200px;
+            }
+          }
+        }
+      </style>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
